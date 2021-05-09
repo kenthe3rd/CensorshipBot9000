@@ -20,7 +20,7 @@ async def on_message(message):
     recentJoinFlag = False
     if message.author == client.user or message.channel.name == getModChannel(message.guild):
         return
-    age = datetime.datetime.now() - message.author.joined_at
+    age = datetime.datetime.now() - message.author.joined_at.replace(tzinfo=datetime.timezone.utc)
     await message.channel.send(message.author.name + " age=" + str(age.total_seconds()))
     if messageContainsBannedWord(bannedWords, message.content):
         bannedWordFlag = True

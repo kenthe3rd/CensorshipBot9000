@@ -17,7 +17,7 @@ async def on_ready():
 async def on_message(message):
     bannedWordFlag = False
     recentJoinFlag = False
-    if message.author == client.user:
+    if message.author == client.user or message.channel.name == getModChannel(message.guild):
         return
 
     if messageContainsBannedWord(bannedWords, message.content):

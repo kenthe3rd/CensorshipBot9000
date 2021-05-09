@@ -24,7 +24,7 @@ async def on_message(message):
         bannedWordFlag = True
 
 
-    if memberIsRecentJoiner():
+    if memberIsRecentJoiner(message.author):
         recentJoinFlag = True
 
     if bannedWordFlag and recentJoinFlag:

@@ -34,7 +34,7 @@ async def on_message(message):
         await modchannel.send(notification)
         return
     elif bannedWordFlag:
-        notification = "Flagged message from " + message.author.name + " submitted in " + message.channel.mention + ":" + message.content
+        notification = "Flagged message from " + message.author.name + " submitted in " + message.channel.mention + ":" + message.content + "\n" + message.jump_url
         modchannel = getModChannel(message.guild)
         await modchannel.send(notification)
         return

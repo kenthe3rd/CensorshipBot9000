@@ -30,7 +30,7 @@ def messageContainsBannedWord(bannedWords, message):
 def memberIsRecentJoiner(member):
     grandfatheredAgeInSeconds = 60 * 60 * 24
     age = datetime.datetime.now() - member.joined_at
-    print("age=" + age.total_seconds())
+    print("age=" + str(age.total_seconds()))
     if age.total_seconds() < grandfatheredAgeInSeconds:
         return True
     return False

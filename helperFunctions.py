@@ -1,5 +1,6 @@
 import csv
 import string
+import datetime
 
 def loadBannedWords():
     output = []
@@ -25,3 +26,12 @@ def messageContainsBannedWord(bannedWords, message):
         if formattedText[-(len(word)+1):] == " " + word:
             return True
     return False
+
+def memberIsRecentJoiner(member):
+    grandfatheredAgeInSeconds = 60 * 60 * 24
+    age = datetime.datetime.now() - member.joined_at
+    print("age=" + age.total_seconds())
+    if age.total_seconds() < grandfatheredAgeInSeconds:
+        return True
+    return False
+

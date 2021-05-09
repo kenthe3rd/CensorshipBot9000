@@ -37,6 +37,5 @@ def memberIsRecentJoiner(member):
 def getModChannel(guild):
     channels = guild.channels
     for channel in channels:
-        if channel.name is "mod-squad":
-            print("found " + channel.name)
+        if channel.name == "mod-squad":
             return channel

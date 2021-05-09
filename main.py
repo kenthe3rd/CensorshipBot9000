@@ -20,7 +20,6 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    getModChannel(message.guild)
     if messageContainsBannedWord(bannedWords, message.content):
         bannedWordFlag = True
 

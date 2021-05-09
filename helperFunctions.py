@@ -15,7 +15,7 @@ def messageContainsBannedWord(bannedWords, message):
     formattedText = message.lower()
     for character in string.punctuation:
         formattedText = formattedText.replace(character, " ")
-
+    formattedText = formattedText.replace("\n", " ")
     for word in bannedWords:
         if " " + word + " " in formattedText:
             return True

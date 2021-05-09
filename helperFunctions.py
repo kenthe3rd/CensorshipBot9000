@@ -28,10 +28,14 @@ def messageContainsBannedWord(bannedWords, message):
     return False
 
 def memberIsRecentJoiner(member):
-    grandfatheredAgeInSeconds = 60 * 60 * 24
+    grandfatheredAgeInSeconds = 60 * 60
     age = datetime.datetime.now() - member.joined_at
-    print("age=" + str(age.total_seconds()))
     if age.total_seconds() < grandfatheredAgeInSeconds:
         return True
     return False
 
+async def getModChannel(guild):
+    channels = await guild.fetch_channels()
+    for channel in channels:
+        if channel.name is "mod-squad":
+            return channel

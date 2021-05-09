@@ -20,6 +20,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    getModChannel(message.guild)
     if messageContainsBannedWord(bannedWords, message.content):
         bannedWordFlag = True
 
@@ -28,14 +29,14 @@ async def on_message(message):
 
     if bannedWordFlag and recentJoinFlag:
         notification = message.author.name + " was banned for the following message submitted in " + message.channel.name + ":" + message.content
-        modchannel = await getModChannel(message.guild)
+        modchannel = getModChannel(message.guild)
         await message.delete()
         await message.guild.ban(message.author)
         await modchannel.send(notification)
         return
     elif bannedWordFlag:
         notification = "Flagged message from " + message.author.name + " submitted in " + message.channel.name + ":" + message.content
-        modchannel = await getModChannel(message.guild)
+        modchannel = getModChannel(message.guild)
         await modchannel.send(notification)
         return
 

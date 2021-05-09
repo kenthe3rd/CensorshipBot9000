@@ -34,8 +34,9 @@ def memberIsRecentJoiner(member):
         return True
     return False
 
-async def getModChannel(guild):
-    channels = await guild.fetch_channels()
+def getModChannel(guild):
+    channels = guild.channels
     for channel in channels:
         if channel.name is "mod-squad":
+            print("found " + channel.name)
             return channel

@@ -27,14 +27,14 @@ async def on_message(message):
         recentJoinFlag = True
 
     if bannedWordFlag and recentJoinFlag:
-        notification = message.author.name + " was banned for the following message submitted in " + message.channel.mention + ":" + message.content
+        notification = message.author.mention + " was banned for the following message submitted in " + message.channel.mention + ":" + message.content
         modchannel = getModChannel(message.guild)
         await message.delete()
         await message.guild.ban(message.author)
         await modchannel.send(notification)
         return
     elif bannedWordFlag:
-        notification = "Flagged message from " + message.author.name + " submitted in " + message.channel.mention + ":" + message.content + "\n" + message.jump_url
+        notification = "Flagged message from " + message.author.mention + " submitted in " + message.channel.mention + ":" + message.content + "\n" + message.jump_url
         modchannel = getModChannel(message.guild)
         await modchannel.send(notification)
         return
